@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       # Always operate on main regardless of which branch was selected
       # in the "Run workflow" dropdown.
