@@ -38,9 +38,9 @@ if [[ -z "$EXISTING_ISSUE" || "$EXISTING_ISSUE" == "null" ]]; then
     "- Version currently pinned in \`helix-p4d/Dockerfile\`: \`$CURRENT_VERSION\`" \
     "- Available version: \`$LATEST_VERSION\`" \
     "" \
-    "The \`apt-get install\` line in the Dockerfile should be updated accordingly (also double-check the \`helix-swarm-triggers\` version if relevant)." \
+    "The \`apt-get install\` line in the Dockerfile should be updated accordingly." \
     "" \
-    "Source: https://package.perforce.com/apt/ubuntu/dists/noble/release/binary-amd64/Packages" \
+    "Source: https://package.perforce.com/apt/ubuntu/dists/resolute/release/binary-amd64/Packages" \
     "" \
     "_This issue was created automatically by the \`check-p4d-version.yml\` workflow._")
 

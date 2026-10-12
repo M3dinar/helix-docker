@@ -1,31 +1,31 @@
 # --------------------------------------------------------------------------------
 # Docker configuration for P4D
 # --------------------------------------------------------------------------------
-# Ubuntu noble and 24.04 are the same, but noble is the codename for 24.04
-FROM ubuntu:24.04
+# Ubuntu resolute and 26.04 are the same, but resolute is the codename for 26.04
+FROM ubuntu:26.04
 
 LABEL org.opencontainers.image.source="https://github.com/M3dinar/helix-docker"
 LABEL org.opencontainers.image.description="Perforce Helix Core (p4d) server, packaged for Docker."
 LABEL org.opencontainers.image.authors="M3dinar <M3dinar@users.noreply.github.com>"
 
 RUN apt-get update && \
-  apt-get install -y wget gnupg2
+  apt-get upgrade -y && \
+  apt-get install -y wget gnupg
 
 # --------------------------------------------------------------------------------
 # Docker BUILD
 # --------------------------------------------------------------------------------
 
 # Create perforce user and install Perforce Server
-# Do in-page search over https://package.perforce.com/apt/ubuntu/dists/noble/release/binary-amd64/Packages
+# Do in-page search over https://package.perforce.com/apt/ubuntu/dists/resolute/release/binary-amd64/Packages
 # for "Package: helix-p4d"
 # Update Ubuntu and add Perforce Package Source
-RUN apt-get update && apt-get install -y wget gnupg && \
-  wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor -o /etc/apt/keyrings/perforce.gpg && \
-  echo "deb [signed-by=/etc/apt/keyrings/perforce.gpg] http://package.perforce.com/apt/ubuntu noble release" > /etc/apt/sources.list.d/perforce.list && \
+RUN wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor -o /etc/apt/keyrings/perforce.gpg && \
+  echo "deb [signed-by=/etc/apt/keyrings/perforce.gpg] http://package.perforce.com/apt/ubuntu resolute release" > /etc/apt/sources.list.d/perforce.list && \
   apt-get update && \
-  apt-get install -y helix-p4d=2026.1-2972966~noble
+  apt-get install -y helix-p4d=2026.1-3089746~resolute
 
-RUN apt-get remove -y wget gnupg2 && \
+RUN apt-get remove -y wget gnupg && \
   apt-get autoremove -y && \
   apt-get clean -y && \
   rm -rf /var/lib/apt/lists/*

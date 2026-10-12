@@ -144,7 +144,7 @@ This repository is heavily inspired by https://github.com/p4paul/helix-docker an
 
 The fork was done to allow some changes
 - Update of the dependancies
-  - Ubuntu focal to noble (no support for racoon ATM)
+  - Ubuntu focal to resolute
   - Helix perforce to 2026.1
 - Removed helix swarm
 - Changed the whole restore checkpoint logic

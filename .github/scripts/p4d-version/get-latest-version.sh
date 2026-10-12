@@ -3,7 +3,7 @@
 # available helix-p4d version, exposed as the "version" step output.
 set -euo pipefail
 
-PACKAGES_URL="https://package.perforce.com/apt/ubuntu/dists/noble/release/binary-amd64/Packages"
+PACKAGES_URL="https://package.perforce.com/apt/ubuntu/dists/resolute/release/binary-amd64/Packages"
 
 TMP_FILE=$(mktemp)
 trap 'rm -f "$TMP_FILE"' EXIT
